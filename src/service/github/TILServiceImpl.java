@@ -20,7 +20,6 @@ public class TILServiceImpl implements TILService {
     public List<TIL> getTIL(Repo repo) throws Exception {
         Logger logger = Logger.getLogger("service.github");
         HttpClient client = HttpClient.newHttpClient();
-//        try {
         switch (repo.repoType()) {
             case GITHUB:
                 String[] tokens = repo.link().split("/");
@@ -30,7 +29,6 @@ public class TILServiceImpl implements TILService {
                         .header("Accept", "application/vnd.github+json")
                         .build(), HttpResponse.BodyHandlers.ofString());
                 logger.info("%d".formatted(response.statusCode()));
-//                    logger.info(response.body());
                 Pattern pattern = Pattern.compile("\"body\":\"(.*?)\",\""); // 수정된 정규 표현식 (최소 매칭)
                 Matcher matcher = pattern.matcher(response.body());
                 while (matcher.find()) {
@@ -42,10 +40,6 @@ public class TILServiceImpl implements TILService {
             case TISTORY:
                 throw new Exception("지원하지 않는 종류");
         }
-//        } catch (Exception e) {
-//            logger.severe(e.getMessage());
-//        }
         return List.of();
     }
-
 }
