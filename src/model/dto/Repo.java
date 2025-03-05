@@ -5,7 +5,7 @@ public record Repo(
    String link,
    String category
 ) {
-   Repo(String name, String link) {
+   public Repo(String name, String link) {
         this(name, link, "");
     }
 }

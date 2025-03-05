@@ -1,7 +1,10 @@
 package util.file;
 
+import model.dto.Repo;
+
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public interface CSVReader {
-    String[] read(String path) throws FileNotFoundException;
+    List<Repo> read(String path) throws FileNotFoundException;
 }
