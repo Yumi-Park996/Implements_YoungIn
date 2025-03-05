@@ -26,9 +26,9 @@ public class CSVReaderImpl implements CSVReader {
 //                logger.info(scanner.nextLine());
                 String[] split = line.split(",");
                 logger.info(Arrays.toString(split));
-                repos.add(split.length == 3 ? new Repo(
+                repos.add(split.length == 3 ? Repo.makeRepo(
                         split[0], split[1], split[2]
-                ) : new Repo(split[0], split[1]));
+                ) : Repo.makeRepo(split[0], split[1]));
             }
         }
 
