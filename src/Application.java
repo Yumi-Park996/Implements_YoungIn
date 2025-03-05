@@ -1,12 +1,10 @@
 import model.dto.Repo;
-import model.dto.TIL;
 import service.github.TILService;
 import service.github.TILServiceImpl;
 import util.file.CSVReader;
 import util.file.CSVReaderImpl;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -31,6 +29,15 @@ public class Application {
 //            logger.info(tils.toString());
 //            // 파일로 나올 예정
 //        }
-        repos.stream().map(service::getTIL).map(Object::toString).forEach(logger::info);
+//        repos.stream().map(service::getTIL).map(Object::toString).forEach(logger::info);
+
+        for (Repo repo : repos) {
+            try {
+                service.getTIL(repo);
+            } catch (Exception e) {
+                logger.severe(e.getMessage());
+            }
+
+        }
     }
 }
