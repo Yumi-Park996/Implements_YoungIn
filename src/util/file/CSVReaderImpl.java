@@ -16,17 +16,20 @@ public class CSVReaderImpl implements CSVReader {
         Logger logger = Logger.getLogger(CSVReaderImpl.class.getName());
         List<Repo> repos = new ArrayList<>();
         try (Scanner scanner = new Scanner(new File(path))) {
-            while (scanner.hasNext()) {
+//            while (scanner.hasNext()) {
+            for (int i = 0; scanner.hasNext(); i++) {
+                if (i == 0) {
+                    logger.info("HEADER : %s".formatted(scanner.nextLine()));
+                    continue;
+                }
                 String line = scanner.nextLine();
 //                logger.info(scanner.nextLine());
                 String[] split = line.split(",");
                 logger.info(Arrays.toString(split));
                 repos.add(split.length == 3 ? new Repo(
-
                         split[0], split[1], split[2]
                 ) : new Repo(split[0], split[1]));
             }
-
         }
 
         return repos;
