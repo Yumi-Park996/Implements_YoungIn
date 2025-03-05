@@ -6,5 +6,5 @@ import model.dto.Repo;
 import java.util.List;
 
 public interface TILService {
-    List<TIL> getTIL(List<Repo> repo) ;
+    List<TIL> getTIL(Repo repo) ;
 }

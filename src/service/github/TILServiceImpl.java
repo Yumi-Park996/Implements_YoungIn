@@ -7,7 +7,8 @@ import java.util.List;
 
 public class TILServiceImpl implements TILService {
     @Override
-    public List<TIL> getTIL(List<Repo> repo) {
+    public List<TIL> getTIL(Repo repo) {
         return List.of();
     }
+
 }
